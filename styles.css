@@ -1,0 +1,105 @@
+html,
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0px;
+    background-color: #0E1013;
+}
+
+.calculator-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 70vh;
+    width: 50vw;
+    border: 2px solid #f8f9fa;
+    border-radius: 8% / 5%;
+    padding: 5px;
+    margin: 0px;
+    max-width: 400px;
+}
+
+.output {
+    display: flex;
+    /* border: 1px solid #80868B; */
+    background-color: #80868b4a;
+    border-radius: 5% / 10%;
+    height: 30%;
+    width: 90%;
+    margin: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.output .previous-operand {
+    display: flex;
+    /* border: 1px solid green; */
+    height: 40%;
+    width: 90%;
+    margin: 10px;
+    margin-bottom: 2px;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #f8f9fa;
+}
+
+.output .current-operand {
+    display: flex;
+    /* border: 1px solid green; */
+    height: 60%;
+    width: 90%;
+    margin: 10px;
+    margin-top: 2px;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #f8f9fa;
+}
+
+.keypad {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    height: 70%;
+    width: 90%;
+    margin: 10px;
+    /* border: 1px solid blue; */
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.keypad button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 18%;
+    width: 22%;
+    border: 1px solid #282A2D;
+    background-color: #282A2D;
+    color: #f8f9fa;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5% / 10%;
+    font-weight: bolder;
+    font-family: sans-serif;
+}
+
+.keypad .equal-button {
+    width: 46%;
+    background-color: orange;
+    border: 1px solid orange;
+}
+
+.keypad .special-button {
+    background-color: #80868B;
+    color: #282A2D;
+}
