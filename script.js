@@ -27,7 +27,9 @@ function multiply(a, b) {
 function divide(a, b) {
 
     if (b === 0) {
-        prompt("Are you stupid? You can't divide by zero!");
+        outputPrevious.innerText = '';
+        outputCurrent.innerText = '';
+        alert("Are you stupid? You can't divide by zero!");
     } else {
         return a / b;
     }
@@ -205,5 +207,27 @@ outputCurrent.addEventListener('DOMSubtreeModified', () => {
         }
     })
 })
+
+//If error present, disbale all buttons except for AC
+const allButtons = document.querySelectorAll('button')
+outputCurrent.addEventListener('DOMSubtreeModified', () => {
+    if (outputCurrent.innerText === 'Error') {
+        allButtons.forEach(button => {
+            if (button.innerText !== 'AC') {
+                button.disabled = true
+            }
+        })
+    } else {
+        allButtons.forEach(button => {
+            button.disabled = false
+        })
+    }
+})
+
+
+//TODO: Add keyboard support
+//TODO: When using "." after a result it doesn't work as intended
+//TODO: Everything regarding styling
+
 
 
