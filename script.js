@@ -282,14 +282,8 @@ checkbox.addEventListener("change", () => {
     html.classList.toggle('dark-mode');
 })
 
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    html.classList.toggle('dark-mode');
-})
 
 
-//TODO: Add keyboard support - DONE, need to keep testing
-//TODO: Everything regarding styling
 
 
 

@@ -1,29 +1,29 @@
 :root {
-    --background-color: #FAF9F6;
-    --button-number-bg-color: #e2e2e2;
+    --background-color: #EDF2F4;
+    --button-number-bg-color: #8D99AE;
     --button-number-text-color: #0E1013;
-    --button-special-bg-color: #0E1013;
+    --button-special-bg-color: #2B2d42;
     --button-special-text-color: #FAF9F6;
-    --button-hover-bg-color: #0E1013;
-    --button-active-bg-color: #0E1013;
-    --button-special-hover-bg-color: #e2e2e2;
-    --button-special-active-bg-color: #e2e2e2;
-    --border-color: #0E1013;
-    --text-color: #0E1013;
+    --button-hover-bg-color: #545D6F;
+    --button-active-bg-color: #545D6F;
+    --button-special-hover-bg-color: #1A1C2B;
+    --button-special-active-bg-color: #1A1C2B;
+    --border-color: #2B2D42;
+    --text-color: #2B2D42;
 }
 
 .dark-mode {
-    --background-color: #0E1013;
-    --button-number-bg-color: #0E1013;
-    --button-number-text-color: #FAF9F6;
-    --button-special-bg-color: #FAF9F6;
+    --background-color: #2B2d42;
+    --button-number-bg-color: #EDF2F4;
+    --button-number-text-color: #2B2d42;
+    --button-special-bg-color: #8D99AE;
     --button-special-text-color: #0E1013;
-    --button-hover-bg-color: #FAF9F6;
-    --button-active-bg-color: #FAF9F6;
-    --button-special-hover-bg-color: #0E1013;
-    --button-special-active-bg-color: #0E1013;
-    --border-color: #FAF9F6;
-    --text-color: #FAF9F6;
+    --button-hover-bg-color: #ADB2B5;
+    --button-active-bg-color: #ADB2B5;
+    --button-special-hover-bg-color: #B8C0D4;
+    --button-special-active-bg-color: #B8C0D4;
+    --border-color: #EDF2F4;
+    --text-color: #EDF2F4;
 }
 
 html,
@@ -31,6 +31,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100%;
     margin: 0px;
     background-color: var(--background-color);
@@ -40,6 +41,12 @@ body {
 button {
     cursor: pointer;
     transition: background-color 0.2s ease;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .calculator-grid {
@@ -60,8 +67,8 @@ button {
     /* border: 1px solid #80868B; */
     background-color: #80868b4a;
     border-radius: 5% / 10%;
-    height: 30%;
-    width: 90%;
+    height: 17%;
+    width: 95%;
     margin: 10px;
     flex-direction: column;
     align-items: center;
@@ -77,7 +84,7 @@ button {
     margin-bottom: 2px;
     justify-content: flex-end;
     align-items: center;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
     font-family: sans-serif;
     color: var(--text-color);
@@ -92,7 +99,7 @@ button {
     margin-top: 2px;
     justify-content: flex-end;
     align-items: center;
-    font-size: 40px;
+    font-size: 45px;
     font-weight: bold;
     font-family: sans-serif;
     color: var(--text-color);
@@ -102,8 +109,8 @@ button {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
-    height: 70%;
-    width: 90%;
+    height: 80%;
+    width: 98%;
     margin: 10px;
     /* border: 1px solid blue; */
     justify-content: space-evenly;
@@ -119,7 +126,7 @@ button {
     border: 1px solid var(--background-color);
     background-color: var(--button-number-bg-color);
     color: var(--button-number-text-color);
-    font-size: 20px;
+    font-size: 35px;
     cursor: pointer;
     border-radius: 5% / 10%;
     font-weight: bolder;
@@ -127,8 +134,8 @@ button {
 }
 
 .keypad .equal-button {
-    width: 46%;
-    background-color: orange;
+    width: 47%;
+    background-color: #EF233C;
 }
 
 .keypad .special-button {
@@ -149,11 +156,11 @@ button {
 }
 
 .keypad .equal-button:hover {
-    background-color: red;
+    background-color: #D90429;
 }
 
 .keypad .equal-button:active {
-    background-color: green;
+    background-color: #D90429;
     transform: scale(0.9);
 }
 
@@ -196,17 +203,19 @@ button {
 
 .checkbox-label .ball {
     background-color: #fff;
-    width: 22px;
-    height: 22px;
+    width: 28px;
+    height: 28px;
     position: absolute;
-    left: 2px;
-    top: 2px;
     border-radius: 50%;
     transition: transform 0.2s linear;
 }
 
 .checkbox:checked+.checkbox-label .ball {
     transform: translateX(24px);
+}
+
+.checkbox:checked+.checkbox-label {
+    background-color: #EF233C;
 }
 
 /* ---------------------------------------------------------------------------- */
