@@ -62,6 +62,7 @@ function operate(operator, a, b) {
 }
 
 //DOM variables
+const allButtons = document.querySelectorAll('button')
 const outputPrevious = document.querySelector('.previous-operand');
 const outputCurrent = document.querySelector('.current-operand');
 const numbers = document.querySelectorAll('.keypad button[data-number]');
@@ -159,15 +160,43 @@ operations.forEach(operation => {
 })
 
 
-//Limitations
+//------------------------------Limitations------------------------------
+// Dynamic div modification changes
 
-//Character input limit
-outputCurrent.addEventListener('DOMSubtreeModified', () => {
-    if (outputCurrent.innerText.length > 17) {
-        outputCurrent.innerText = outputCurrent.innerText.slice(0, 17);
+const observerConfig = { childList: true, subtree: true, attributes: true };
+const callback = function (mutationsList, observer) {
+    for (let mutation of mutationsList) {
+
+        //Character input limit
+        if (outputCurrent.innerText.length > 17) {
+            outputCurrent.innerText = outputCurrent.innerText.slice(0, 17);
+        }
+
+        //If error message, disable all buttons
+        if (outputCurrent.innerText === 'Error') {
+            allButtons.forEach(button => {
+                if (button.innerText !== 'AC') {
+                    button.disabled = true
+                }
+            })
+        } else {
+            allButtons.forEach(button => {
+                button.disabled = false
+            })
+            //If theres a decimal point, prevent it from being added
+            numbers.forEach(number => {
+                if (outputCurrent.innerText.includes('.') && number.innerText === '.') {
+                    number.disabled = true
+                } else {
+                    number.disabled = false
+                }
+            })
+        }
     }
-})
+}
 
+const observer = new MutationObserver(callback);
+observer.observe(outputCurrent, observerConfig);
 
 //Character result limit
 function formatResult(result, maxLength = 17) {
@@ -197,35 +226,53 @@ function formatResult(result, maxLength = 17) {
     return strResult;
 }
 
-//More than one decimal point
-outputCurrent.addEventListener('DOMSubtreeModified', () => {
-    numbers.forEach(number => {
-        if (outputCurrent.innerText.includes('.') && number.innerText === '.') {
-            number.disabled = true
-        } else {
-            number.disabled = false
-        }
-    })
+
+//------------------------------Keyboard Support------------------------------
+document.addEventListener('keydown', (e) => {
+    handleKeyPress(e.key);
 })
 
-//If error present, disbale all buttons except for AC
-const allButtons = document.querySelectorAll('button')
-outputCurrent.addEventListener('DOMSubtreeModified', () => {
-    if (outputCurrent.innerText === 'Error') {
-        allButtons.forEach(button => {
-            if (button.innerText !== 'AC') {
-                button.disabled = true
-            }
-        })
-    } else {
-        allButtons.forEach(button => {
-            button.disabled = false
-        })
+
+function handleKeyPress(key) {
+    switch (key) {
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            document.querySelector(`button[data-value="${key}"]`).click();
+            break;
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+            document.querySelector(`button[data-value="${key}"]`).click();
+            break;
+        case '.':
+            document.querySelector(`button[data-value="${key}"]`).click();
+            break;
+        case 'Enter':
+            document.querySelector(`button[data-value="="]`).click();
+            break;
+        case 'Backspace':
+            document.querySelector(`button[data-value="DEL"]`).click();
+            break;
+        case 'Escape':
+            document.querySelector(`button[data-value="AC"]`).click();
+            break;
+        default:
+            break;
     }
-})
+}
 
 
-//TODO: Add keyboard support
+
+//TODO: Add keyboard support - DONE, need to keep testing
 //TODO: When using "." after a result it doesn't work as intended
 //TODO: Everything regarding styling
 
