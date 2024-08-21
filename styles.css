@@ -1,3 +1,31 @@
+:root {
+    --background-color: #FAF9F6;
+    --button-number-bg-color: #e2e2e2;
+    --button-number-text-color: #0E1013;
+    --button-special-bg-color: #0E1013;
+    --button-special-text-color: #FAF9F6;
+    --button-hover-bg-color: #0E1013;
+    --button-active-bg-color: #0E1013;
+    --button-special-hover-bg-color: #e2e2e2;
+    --button-special-active-bg-color: #e2e2e2;
+    --border-color: #0E1013;
+    --text-color: #0E1013;
+}
+
+.dark-mode {
+    --background-color: #0E1013;
+    --button-number-bg-color: #0E1013;
+    --button-number-text-color: #FAF9F6;
+    --button-special-bg-color: #FAF9F6;
+    --button-special-text-color: #0E1013;
+    --button-hover-bg-color: #FAF9F6;
+    --button-active-bg-color: #FAF9F6;
+    --button-special-hover-bg-color: #0E1013;
+    --button-special-active-bg-color: #0E1013;
+    --border-color: #FAF9F6;
+    --text-color: #FAF9F6;
+}
+
 html,
 body {
     display: flex;
@@ -5,7 +33,13 @@ body {
     align-items: center;
     height: 100%;
     margin: 0px;
-    background-color: #0E1013;
+    background-color: var(--background-color);
+    transition: background-color 0.2s ease;
+}
+
+button {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .calculator-grid {
@@ -13,13 +47,12 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    height: 70vh;
-    width: 50vw;
-    border: 2px solid #f8f9fa;
+    height: 700px;
+    width: 500px;
+    border: 2px solid var(--border-color);
     border-radius: 8% / 5%;
     padding: 5px;
     margin: 0px;
-    max-width: 400px;
 }
 
 .output {
@@ -47,7 +80,7 @@ body {
     font-size: 20px;
     font-weight: bold;
     font-family: sans-serif;
-    color: #f8f9fa;
+    color: var(--text-color);
 }
 
 .output .current-operand {
@@ -62,7 +95,7 @@ body {
     font-size: 40px;
     font-weight: bold;
     font-family: sans-serif;
-    color: #f8f9fa;
+    color: var(--text-color);
 }
 
 .keypad {
@@ -83,9 +116,9 @@ body {
     align-items: center;
     height: 18%;
     width: 22%;
-    border: 1px solid #282A2D;
-    background-color: #282A2D;
-    color: #f8f9fa;
+    border: 1px solid var(--background-color);
+    background-color: var(--button-number-bg-color);
+    color: var(--button-number-text-color);
     font-size: 20px;
     cursor: pointer;
     border-radius: 5% / 10%;
@@ -96,10 +129,84 @@ body {
 .keypad .equal-button {
     width: 46%;
     background-color: orange;
-    border: 1px solid orange;
 }
 
 .keypad .special-button {
-    background-color: #80868B;
-    color: #282A2D;
+    background-color: var(--button-special-bg-color);
+    color: var(--button-special-text-color);
 }
+
+
+
+/* Extras */
+.keypad button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+.keypad button:active {
+    background-color: var(--button-active-bg-color);
+    transform: scale(0.9);
+}
+
+.keypad .equal-button:hover {
+    background-color: red;
+}
+
+.keypad .equal-button:active {
+    background-color: green;
+    transform: scale(0.9);
+}
+
+.keypad .special-button:hover {
+    background-color: var(--button-special-hover-bg-color);
+}
+
+.keypad .special-button:active {
+    background-color: var(--button-special-active-bg-color);
+    transform: scale(0.9);
+}
+
+
+/* ---------------------------------------------------------------------------- */
+.checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox-label {
+    background-color: #111;
+    width: 50px;
+    height: 26px;
+    border-radius: 50px;
+    position: relative;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fa-moon {
+    color: #f1c40f;
+}
+
+.fa-sun {
+    color: #f39c12;
+}
+
+.checkbox-label .ball {
+    background-color: #fff;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
+}
+
+.checkbox:checked+.checkbox-label .ball {
+    transform: translateX(24px);
+}
+
+/* ---------------------------------------------------------------------------- */

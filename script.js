@@ -270,10 +270,25 @@ function handleKeyPress(key) {
     }
 }
 
+//------------------------------Dark Mode------------------------------
+const themeToggle = document.getElementById('theme-toggle');
+const checkbox = document.getElementById("checkbox")
+const body = document.querySelector('body');
+const html = document.querySelector('html');
+
+
+checkbox.addEventListener("change", () => {
+    body.classList.toggle('dark-mode');
+    html.classList.toggle('dark-mode');
+})
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    html.classList.toggle('dark-mode');
+})
 
 
 //TODO: Add keyboard support - DONE, need to keep testing
-//TODO: When using "." after a result it doesn't work as intended
 //TODO: Everything regarding styling
 
 
